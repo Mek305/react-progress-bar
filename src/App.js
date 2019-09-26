@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react';
+import'./App.css'
+import DisplayProgress from './DisplayProgress.js'
+import Slider from './Slider.js'
+class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      value:0
+    }
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  setValue(newValue){
+    this.setState({
+      value: newValue
+    })
+
+  }
+  
+  render(){
+    return(
+      <div className = "App">
+      <h1>React Progress Bar</h1>
+      <DisplayProgress value ={this.state.value}/>
+      <Slider value = {this.state.value}
+      setValue = {this.setValue.bind(this)}/>
+      </div>
+    )
+  
+  
+  }
 }
 
 export default App;
